@@ -1,6 +1,16 @@
 const searchForm = document.querySelector("#search-form");
 const searchFormInput = searchForm.querySelector("input"); 
 const info = document.querySelector(".info");
+var voiceList = document.querySelector('#voiceList');
+var synth = window.speechSynthesis;
+var voices = [];
+searchFormInput.addEventListener("keyup",function(event){
+  event.preventDefault();
+  var textSpeak = new SpeechSynthesisUtterance(event.currentTarget.value);
+  if (event.keyCode == '13') {
+    synth.speak(textSpeak);
+}
+});
 
 // The speech recognition interface lives on the browser’s window object
 const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
